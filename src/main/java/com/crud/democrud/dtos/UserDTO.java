@@ -13,4 +13,5 @@ public class UserDTO {
     private Integer priority;
     private String email;
 
+
 }

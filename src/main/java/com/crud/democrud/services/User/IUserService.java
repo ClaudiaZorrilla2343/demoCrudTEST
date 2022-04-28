@@ -6,5 +6,6 @@ import com.crud.democrud.services.IEntityService;
 import java.util.List;
 
 public interface IUserService extends IEntityService<UserDTO> {
+    void put(UserDTO entity);
 
 }

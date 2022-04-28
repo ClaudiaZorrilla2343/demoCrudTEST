@@ -35,4 +35,9 @@ public class UserController {
         service.save(user);
     }
 
+    @PutMapping
+    public void put(@RequestBody UserDTO user) {
+        service.put(user);
+    }
+
 }

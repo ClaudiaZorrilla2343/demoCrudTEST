@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,7 @@ public class UsuarioService implements IUserService {
 
     private final UsuarioRepository usuarioRepository;
 
+    private final EntityManager entityManager;
 
     @Setter(onMethod_ = @Autowired)
     private ModelMapper mapper;
@@ -56,5 +58,11 @@ public class UsuarioService implements IUserService {
 
     public void delete(String user) {
 
+    }
+
+    @Override
+    @Transactional
+    public void put(UserDTO entity) {
+        entityManager.merge(mapper.map(entity, UsuarioModel.class));
     }
 }
