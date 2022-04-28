@@ -1,4 +1,4 @@
-package com.crud.democrud.services;
+package com.crud.democrud.services.User;
 
 import com.crud.democrud.models.UsuarioModel;
 import com.crud.democrud.repositories.UsuarioRepository;
@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements IUserService{
     @Autowired
     UsuarioRepository usuarioRepository;
     
@@ -40,5 +41,23 @@ public class UsuarioService {
     }
 
 
-    
+    @Override
+    public Object findById(Long id) {
+        return null;
+    }
+
+    @Override
+    public List findAll() {
+        return null;
+    }
+
+    @Override
+    public void save(Object entity) {
+
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
 }

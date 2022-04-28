@@ -10,17 +10,19 @@ public class UsuarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
-
-    private String nombre;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "EMAIL")
     private String email;
-    private Integer prioridad;
+    @Column(name = "PRIORITY")
+    private Integer priority;
 
-    public void setPrioridad(Integer prioridad) {
-        this.prioridad = prioridad;
+    public void setPriority(Integer priority) {
+        this.priority = priority;
     }
 
-    public Integer getPrioridad() {
-        return prioridad;
+    public Integer getPriority() {
+        return priority;
     }
 
     public Long getId() {
@@ -31,12 +33,12 @@ public class UsuarioModel {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -44,9 +46,9 @@ public class UsuarioModel {
     }
 
     public UsuarioModel(String nombre, String email, Integer prioridad) {
-        this.nombre = nombre;
+        this.name = nombre;
         this.email = email;
-        this.prioridad = prioridad;
+        this.priority = prioridad;
     }
 
     public UsuarioModel() {
