@@ -1,58 +1,50 @@
 package com.crud.democrud.services.User;
 
+import com.crud.democrud.Exceptions.NoFoundException;
+import com.crud.democrud.dtos.UserDTO;
 import com.crud.democrud.models.UsuarioModel;
 import com.crud.democrud.repositories.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioService implements IUserService{
-    @Autowired
-    UsuarioRepository usuarioRepository;
-    
-    public ArrayList<UsuarioModel> obtenerUsuarios(){
-        return (ArrayList<UsuarioModel>) usuarioRepository.findAll();
-    }
+@RequiredArgsConstructor
+public class UsuarioService implements IUserService {
 
-    public UsuarioModel guardarUsuario(UsuarioModel usuario){
-        return usuarioRepository.save(usuario);
-    }
-
-    public Optional<UsuarioModel> obtenerPorId(Long id){
-        return usuarioRepository.findById(id);
-    }
+    private final UsuarioRepository usuarioRepository;
 
 
-    public ArrayList<UsuarioModel>  obtenerPorPrioridad(Integer prioridad) {
-        return usuarioRepository.findByPrioridad(prioridad);
-    }
-
-    public boolean eliminarUsuario(Long id) {
-        try{
-            usuarioRepository.deleteById(id);
-            return true;
-        }catch(Exception err){
-            return false;
-        }
-    }
-
+    @Setter(onMethod_ = @Autowired)
+    private ModelMapper mapper;
 
     @Override
-    public Object findById(Long id) {
-        return null;
+    @Transactional(readOnly = true)
+    public UserDTO findById(Long id) {
+
+        return mapper.map(usuarioRepository.findById(id)
+                .orElseThrow(NoFoundException :: new),
+                UserDTO.class);
+
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<UserDTO> findAll() {
+        return usuarioRepository.findAll().stream().map(usuarioModel -> mapper.map(
+                usuarioModel, UserDTO.class
+        )).toList();
     }
 
     @Override
-    public List findAll() {
-        return null;
-    }
-
-    @Override
-    public void save(Object entity) {
+    public void save(UserDTO entity) {
 
     }
 

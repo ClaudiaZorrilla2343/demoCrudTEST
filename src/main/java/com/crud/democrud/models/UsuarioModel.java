@@ -1,8 +1,13 @@
 package com.crud.democrud.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "usuario")
 public class UsuarioModel {
 
@@ -16,47 +21,5 @@ public class UsuarioModel {
     private String email;
     @Column(name = "PRIORITY")
     private Integer priority;
-
-    public void setPriority(Integer priority) {
-        this.priority = priority;
-    }
-
-    public Integer getPriority() {
-        return priority;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public UsuarioModel(String nombre, String email, Integer prioridad) {
-        this.name = nombre;
-        this.email = email;
-        this.priority = prioridad;
-    }
-
-    public UsuarioModel() {
-
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 }
