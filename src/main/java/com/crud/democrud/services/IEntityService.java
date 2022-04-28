@@ -9,6 +9,4 @@ public interface IEntityService <T> {
     void save (T entity);
     void delete(Long id);
 
-
-
 }

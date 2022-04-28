@@ -1,9 +1,11 @@
 package com.crud.democrud.controllers;
 
+import com.crud.democrud.dtos.RolDTO;
 import com.crud.democrud.dtos.UserDTO;
+import com.crud.democrud.models.Rol;
+import com.crud.democrud.services.Rol.IRolService;
 import com.crud.democrud.services.User.IUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -11,17 +13,16 @@ import java.util.List;
 @CrossOrigin("/3000")
 @RequestMapping("/usuario")
 @RequiredArgsConstructor
-public class UserController {
-
-    private final IUserService service;
+public class RolContoller {
+    private final IRolService service;
 
     @GetMapping("/{id}")
-    public UserDTO findById(@PathVariable Long id) {
+    public RolDTO findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
     @GetMapping
-    public List<UserDTO> findAll() {
+    public List<RolDTO> findAll() {
         return service.findAll();
     }
 
@@ -31,13 +32,12 @@ public class UserController {
     }
 
     @PostMapping
-    public void save(@RequestBody UserDTO user) {
+    public void save(@RequestBody RolDTO user) {
         service.save(user);
     }
 
     @PutMapping
-    public void put(@RequestBody UserDTO user) {
+    public void put(@RequestBody RolDTO user) {
         service.put(user);
     }
-
 }
