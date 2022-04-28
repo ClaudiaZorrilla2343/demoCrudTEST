@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("/3000")
-@RequestMapping("/usuario")
+@RequestMapping("/rol")
 @RequiredArgsConstructor
 public class RolContoller {
     private final IRolService service;
