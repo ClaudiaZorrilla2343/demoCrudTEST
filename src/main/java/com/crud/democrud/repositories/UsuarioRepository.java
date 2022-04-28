@@ -9,6 +9,5 @@ import java.util.ArrayList;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
-    public abstract ArrayList<UsuarioModel> findByPrioridad(Integer prioridad);
 
 }

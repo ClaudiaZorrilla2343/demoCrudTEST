@@ -30,7 +30,7 @@ public class UsuarioService implements IUserService {
     public UserDTO findById(Long id) {
 
         return mapper.map(usuarioRepository.findById(id)
-                .orElseThrow(NoFoundException :: new),
+                        .orElseThrow(NoFoundException::new),
                 UserDTO.class);
 
     }
@@ -44,12 +44,17 @@ public class UsuarioService implements IUserService {
     }
 
     @Override
+    @Transactional
     public void save(UserDTO entity) {
-
+        usuarioRepository.save(mapper.map(entity, UsuarioModel.class));
     }
 
     @Override
     public void delete(Long id) {
+        usuarioRepository.deleteById(id);
+    }
+
+    public void delete(String user) {
 
     }
 }

@@ -9,7 +9,7 @@ public class Mapper {
 
     /**
      * Genera un metodo de cualquier tipo que al inyectarse se devuelva lo que tiene de contenido
-     * @return 
+     * @return
      */
     @Bean
     public ModelMapper modelMapper() {
